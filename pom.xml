@@ -35,6 +35,7 @@
 	<properties>
 		<java.version>21</java.version>
 		<org.lombok.version>1.18.34</org.lombok.version>
+		<org.mybatis.spring.boot>3.0.4</org.mybatis.spring.boot>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -42,6 +43,11 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${org.lombok.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${org.mybatis.spring.boot}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
