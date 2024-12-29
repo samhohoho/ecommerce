@@ -17,6 +17,7 @@
 
 	<modules>
 		<module>cart</module>
+		<module>product</module>
 	</modules>
 
 	<url/>
