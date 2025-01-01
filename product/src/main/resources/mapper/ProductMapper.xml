@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecommerce.product.dao.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.ecommerce.product.model.Product">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="short_description" property="shortDescription"/>
+    </resultMap>
+
+    <insert id="insertProduct" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO product
+        (
+            name,
+            short_description,
+            description
+        )
+        VALUES
+        (
+            #{name},
+            #{shortDescription},
+            #{description}
+        )
+    </insert>
+</mapper>
