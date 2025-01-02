@@ -8,6 +8,17 @@
         <result column="short_description" property="shortDescription"/>
     </resultMap>
 
+    <select id="getProduct" resultMap="BaseResultMap">
+        SELECT
+            p.id,
+            p.name,
+            p.short_description,
+            p.description
+        FROM
+            product p
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
     <insert id="insertProduct" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO product
         (
