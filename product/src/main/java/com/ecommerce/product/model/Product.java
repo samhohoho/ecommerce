@@ -14,4 +14,6 @@ public class Product {
     private String name;
     private String shortDescription;
     private String description;
+    private String brandName;
+    private String categoryName;
 }
