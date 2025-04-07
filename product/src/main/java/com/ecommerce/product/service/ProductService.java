@@ -1,6 +1,7 @@
 package com.ecommerce.product.service;
 
 import com.ecommerce.product.dao.ProductMapper;
+import com.ecommerce.product.dto.ProductDetail;
 import com.ecommerce.product.model.Product;
 import com.ecommerce.product.viewmodel.ProductPostVm;
 import lombok.Data;
@@ -29,5 +30,11 @@ public class ProductService {
         params.put("offset", offset);
         params.put("pageSize", pageSize);
         return productMapper.getProduct(params);
+    }
+
+    public ProductDetail getProductById(long productId) {
+        ProductDetail productDetail = productMapper.getProductById(productId);
+
+        return productDetail;
     }
 }

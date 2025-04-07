@@ -1,5 +1,6 @@
 package com.ecommerce.product.dao;
 
+import com.ecommerce.product.dto.ProductDetail;
 import com.ecommerce.product.model.Product;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,4 +11,5 @@ import java.util.Map;
 public interface ProductMapper {
     void insertProduct(Product product);
     List<Product> getProduct(Map<String, Object> params);
+    ProductDetail getProductById(long productId);
 }

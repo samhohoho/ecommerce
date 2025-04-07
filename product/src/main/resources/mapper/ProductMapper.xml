@@ -10,6 +10,15 @@
         <result column="category_name" property="categoryName"/>
     </resultMap>
 
+    <resultMap id="ProductDetailMap" type="com.ecommerce.product.dto.ProductDetail">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="short_description" property="shortDescription"/>
+        <result column="brand_name" property="brandName"/>
+        <result column="category_name" property="categoryName"/>
+    </resultMap>
+
     <select id="getProduct" resultMap="BaseResultMap">
         SELECT
             p.id,
@@ -22,6 +31,20 @@
         JOIN brand b ON b.id = p.brand_id
         JOIN category c ON c.id = p.category_id
         LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+    <select id="getProductById" resultMap="ProductDetailMap">
+        SELECT
+            p.id,
+            p.name,
+            p.short_description,
+            p.description,
+            b.name brand_name,
+            c.name category_name
+        FROM product p
+        JOIN brand b ON b.id = p.brand_id
+        JOIN category c ON c.id = p.category_id
+        WHERE p.id = #{productId}
     </select>
 
     <insert id="insertProduct" useGeneratedKeys="true" keyProperty="id">

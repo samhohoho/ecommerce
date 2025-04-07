@@ -1,5 +1,6 @@
 package com.ecommerce.product.controller;
 
+import com.ecommerce.product.dto.ProductDetail;
 import com.ecommerce.product.model.Product;
 import com.ecommerce.product.service.ProductService;
 import com.ecommerce.product.viewmodel.ProductPostVm;
@@ -22,6 +23,12 @@ public class ProductController {
     ) {
         List<Product> response = productService.getProducts(Math.max(1, pageNo), Math.max(1, pageSize));
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/api/products/{productId}")
+    public ResponseEntity<ProductDetail> findByProductId(@PathVariable long productId) {
+        ProductDetail response = productService.getProductById(productId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping(path = "/api/products")
