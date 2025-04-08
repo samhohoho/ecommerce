@@ -38,6 +38,7 @@
 		<org.lombok.version>1.18.34</org.lombok.version>
 		<org.mybatis.spring.boot>3.0.4</org.mybatis.spring.boot>
 		<spring-cloud.version>2023.0.0</spring-cloud.version>
+		<spring.boot.starter.data.redis.version>3.4.4</spring.boot.starter.data.redis.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -58,6 +59,11 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.starter.data.redis.version}</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
