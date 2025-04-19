@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.product.dao.ProductMapper;
 import com.ecommerce.product.dto.ProductDetail;
+import com.ecommerce.product.dto.product.ProductUpdateDto;
+import com.ecommerce.product.mapper.ProductMapperV2;
 import com.ecommerce.product.model.Product;
 import com.ecommerce.product.viewmodel.ProductPostVm;
 
@@ -26,6 +29,14 @@ public class ProductService {
         product.setDescription(productPostVm.getDescription());
         product.setName(productPostVm.getName());
         productMapper.insertProduct(product);
+    }
+
+    @CacheEvict(value = "product", key = "#productId")
+    public ProductDetail updateProduct(long productId, ProductUpdateDto dto) {
+        Product product = ProductMapperV2.toModel(productId, dto);
+        productMapper.updateProductById(product);
+        ProductDetail productDetail = ProductMapperV2.toDto(productId, dto);
+        return productDetail;
     }
 
     public List<Product> getProducts(int pageNo, int pageSize) {

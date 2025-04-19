@@ -1,6 +1,7 @@
 package com.ecommerce.product.controller;
 
 import com.ecommerce.product.dto.ProductDetail;
+import com.ecommerce.product.dto.product.ProductUpdateDto;
 import com.ecommerce.product.model.Product;
 import com.ecommerce.product.service.ProductService;
 import com.ecommerce.product.viewmodel.ProductPostVm;
@@ -29,6 +30,15 @@ public class ProductController {
     public ResponseEntity<ProductDetail> findByProductId(@PathVariable long productId) {
         ProductDetail response = productService.getProductById(productId);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/api/product/{productId}")
+    public ResponseEntity<String> updateByProductId(
+        @PathVariable long productId,
+        @RequestBody ProductUpdateDto dto
+    ) {
+        productService.updateProduct(productId, dto);
+        return ResponseEntity.ok("ok");
     }
 
     @PostMapping(path = "/api/products")
