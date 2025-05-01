@@ -19,6 +19,7 @@
 		<module>cart</module>
 		<module>product</module>
 		<module>discovery</module>
+		<module>api-gateway</module>
 	</modules>
 
 	<url/>
